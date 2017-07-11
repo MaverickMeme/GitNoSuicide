@@ -1,3 +1,3 @@
 ----Config Start----
-ChatPrinted = "We do not permit suiciding on our server." -- What should be printed in chat when attempting suicide
+ChatPrinted = "We do not allowed player suicide on our server." -- What should be printed in chat
 ----Config End------
