@@ -1,12 +1,11 @@
 if SERVER then
-	AddCSLuaFile("config.lua")
-	include("config.lua")
-
-	util.AddNetworkString("ch_Mg")
+	AddCSLuaFile("nosuicide/config.lua")
+	include("nosuicide/config.lua")
+	util.AddNetworkString("nosuicide_chatMsg")
 
 	local function WhySuicide(ply)
 		if ply:IsPlayer() then
-			net.Start("ch_Mg")
+			net.Start("nosuicide_chatMsg")
 			net.Send(ply)
 			return false
 		end
@@ -14,9 +13,9 @@ if SERVER then
 	hook.Add("CanPlayerSuicide","dont_suicide", WhySuicide)
 
 else
-
-	net.Receive("ch_Mg", function()
-		chat.AddText(Color(255,0,0),"[Anti-Suicide]: ",Color(255,255,255),ChatPrinted)
+	include("nosuicide/config.lua")
+	net.Receive("nosuicide_chatMsg", function()
+		chat.AddText(Color(255,0,0),"[Anti-Suicide]: ",Color(255,255,255), nosuicide.ChatPrinted)
 		chat.PlaySound()
 	end)
 
